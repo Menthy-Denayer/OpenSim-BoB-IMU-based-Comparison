@@ -1,0 +1,552 @@
+g = [0,0,-9.81]
+objective_order = 2
+activation_cap = 1
+%activation_cap = inf
+activation_repeat= 10
+
+%skull
+skull.entity=segment
+skull.mass=0.07
+skull.size=0.12
+skull.diameter=0.12
+skull.ports.c1.position=[0.,0,-0.05]
+skull.ports.c1.orient=[0,-7,0]
+
+%neck
+skull_c1.entity=joint
+skull_c1.type=spherical
+skull_c1.conn1=skull.ports.c1
+skull_c1.conn2=c1.ports.skull
+skull_c1.active=0
+
+c1.entity=segment
+c1.mass=0.0049
+c1.size=0.01
+c1.diameter=0.01
+c1.orient=[0,0,0]
+c1.k=[1e-2,1e-2,1e-2]
+c1.ports.skull.position=[0 0 0.5]
+c1.ports.skull.orient=[0 0 0]
+c1.ports.c2.position=[0 0 -0.55]
+c1.ports.c2.orient=[0 0 0]
+
+c1_c2.entity=joint
+c1_c2.type=spherical
+c1_c2.conn1=c1.ports.c2
+c1_c2.conn2=c2.ports.c1
+c1_c2.active=0
+
+c2.entity=segment
+c2.mass=0.0049
+c2.size=0.01
+c2.diameter=0.01
+c2.orient=[0,0,0]
+c2.k=[1e-2,1e-2,1e-2]
+c2.ports.c1.position=[0 0 0.5]
+c2.ports.c1.orient=[0 0 0]
+c2.ports.c3.position=[0 0 -0.55]
+c2.ports.c3.orient=[0 0 0]
+
+c2_c3.entity=joint
+c2_c3.type=spherical
+c2_c3.conn1=c2.ports.c3
+c2_c3.conn2=c3.ports.c2
+c2_c3.active=0
+
+c3.entity=segment
+c3.mass=0.0049
+c3.size=0.01
+c3.diameter=0.01
+c3.orient=[0,0,0]
+c3.k=[1e-2,1e-2,1e-2]
+c3.ports.c2.position=[0 0 0.5]
+c3.ports.c2.orient=[0 0 0]
+c3.ports.c4.position=[0 0 -0.55]
+c3.ports.c4.orient=[0 0 0]
+
+c3_c4.entity=joint
+c3_c4.type=spherical
+c3_c4.conn1=c3.ports.c4
+c3_c4.conn2=c4.ports.c3
+c3_c4.active=123
+
+c4.entity=segment
+c4.mass=0.0049
+c4.size=0.01
+c4.diameter=0.01
+c4.orient=[0,0,0]
+c4.k=[1e-2,1e-2,1e-2]
+c4.ports.c3.position=[0 0 0.5]
+c4.ports.c3.orient=[0 0 0]
+c4.ports.c5.position=[0 0 -0.55]
+c4.ports.c5.orient=[0 0 0]
+
+c4_c5.entity=joint
+c4_c5.type=spherical
+c4_c5.conn1=c4.ports.c5
+c4_c5.conn2=c5.ports.c4
+c4_c5.active=0
+
+c5.entity=segment
+c5.mass=0.0049
+c5.size=0.01
+c5.diameter=0.01
+c5.orient=[0,0,0]
+c5.k=[1e-2,1e-2,1e-2]
+c5.ports.c4.position=[0 0 0.5]
+c5.ports.c4.orient=[0 0 0]
+c5.ports.c6.position=[0 0 -0.55]
+c5.ports.c6.orient=[0 0 0]
+
+c5_c6.entity=joint
+c5_c6.type=spherical
+c5_c6.conn1=c5.ports.c6
+c5_c6.conn2=c6.ports.c5
+c5_c6.active=0
+
+c6.entity=segment
+c6.mass=0.0049
+c6.size=0.01
+c6.diameter=0.01
+c6.orient=[0,0,0]
+c6.k=[1e-2,1e-2,1e-2]
+c6.ports.c5.position=[0 0 0.5]
+c6.ports.c5.orient=[0 0 0]
+c6.ports.c7.position=[0 0 -0.55]
+c6.ports.c7.orient=[0 0 0]
+
+c6_c7.entity=joint
+c6_c7.type=spherical
+c6_c7.conn1=c6.ports.c7
+c6_c7.conn2=c7.ports.c6
+c6_c7.active=0
+
+c7.entity=segment
+c7.mass=0.0049
+c7.size=0.01
+c7.diameter=0.01
+c7.orient=[0,0,0]
+c7.k=[1e-2,1e-2,1e-2]
+c7.ports.c6.position=[0 0 0.5]
+c7.ports.c6.orient=[0 0 0]
+c7.ports.thorax.position=[0 0 -0.55]
+c7.ports.thorax.orient=[0 0 0]
+
+c7_thorax.entity=joint
+c7_thorax.type=spherical
+c7_thorax.conn1=c7.ports.thorax
+c7_thorax.conn2=thorax.ports.c7
+c7_thorax.active=0
+
+%thorax
+thorax.entity=segment
+thorax.mass=0.306
+thorax.size=0.1766 % Adapted to fit subject (*1.1141)
+thorax.diameter=0.1
+thorax.ports.l1.position=[-0.0,0,-0.6]
+thorax.ports.l1.orient=[0,40,0]
+thorax.ports.c7.position=[-0.1,0,0.45]
+thorax.ports.c7.orient=[0,0,0]
+thorax.ports.right_clavicle.position=[0.115,-0.052,0.4]
+thorax.ports.right_clavicle.orient=[90,-28.888,0]
+thorax.ports.left_clavicle.position=[0.115,0.052,0.4]
+thorax.ports.left_clavicle.orient=[-90,-28.888,180]
+
+%sternoclavicular joints
+right_sc_joint.entity=joint
+right_sc_joint.type=spherical
+right_sc_joint.conn1=thorax.ports.right_clavicle
+right_sc_joint.conn2=right_clavicle.ports.thorax
+right_sc_joint.active=0
+left_sc_joint.entity=joint
+left_sc_joint.type=spherical
+left_sc_joint.conn1=thorax.ports.left_clavicle
+left_sc_joint.conn2=left_clavicle.ports.thorax
+left_sc_joint.active=0
+
+%clavicles
+right_clavicle.entity=segment
+right_clavicle.mass=1e-4
+right_clavicle.size=0.0856 % Adapted to fit subject, same scale as thorax (*1.141)
+right_clavicle.diameter=0.01
+right_clavicle.ports.thorax.position=[0,0,-0.5]
+right_clavicle.ports.thorax.orient=[0,0,0]
+right_clavicle.ports.right_scapula.position=[0,0,0.4]
+right_clavicle.ports.right_scapula.orient=[0,-60,0]
+right_clavicle.ports.right_humerus.position=[0,0,0.6]
+right_clavicle.ports.right_humerus.orient=[0,28.888,188]
+left_clavicle.entity=segment
+left_clavicle.mass=1e-4
+left_clavicle.size=0.075
+left_clavicle.diameter=0.01
+left_clavicle.ports.thorax.position=[0,0,-0.5]
+left_clavicle.ports.left_scapula.position=[0,0,0.4]
+left_clavicle.ports.left_scapula.orient=[0,60,0]
+left_clavicle.ports.left_humerus.position=[0,0,0.6]
+left_clavicle.ports.left_humerus.orient=[0,-28.888,-8]
+
+%acromioclavicular joint
+right_ac_joint.entity=joint
+right_ac_joint.type=spherical
+right_ac_joint.conn1=right_clavicle.ports.right_scapula
+right_ac_joint.conn2=right_scapula.ports.right_clavicle
+right_ac_joint.shoulder_angle=[-90 -60  0 60 90]
+right_ac_joint.scapula_angle=[    0  0  0 15 20]
+right_ac_joint.active=0
+left_ac_joint.entity=joint
+left_ac_joint.type=spherical
+left_ac_joint.conn1=left_clavicle.ports.left_scapula
+left_ac_joint.conn2=left_scapula.ports.left_clavicle
+left_ac_joint.shoulder_angle=[-90 -60  0 60 90]
+left_ac_joint.scapula_angle=[ -20 -15  0  0  0]
+left_ac_joint.active=0
+
+%scapulae
+right_scapula.entity=segment
+right_scapula.mass=1e-3
+right_scapula.size=0.0698 % Adapted to fit subject, same scale as thorax (*1.141)
+right_scapula.diameter=0.03
+right_scapula.ports.right_clavicle.orient=[0,-60,90]
+right_scapula.ports.right_clavicle.position=[0.2,0.2,-0.3]
+left_scapula.entity=segment
+left_scapula.mass=1e-3
+left_scapula.size=0.0611
+left_scapula.diameter=0.03
+left_scapula.ports.left_clavicle.orient=[0,60,-90]
+left_scapula.ports.left_clavicle.position=[-0.2,0.2,-0.3]
+
+%shoulder joint
+right_shoulder.entity=joint
+right_shoulder.type=spherical
+right_shoulder.conn1=right_clavicle.ports.right_humerus
+right_shoulder.conn2=right_humerus.ports.right_clavicle
+right_shoulder.active=123
+left_shoulder.entity=joint
+left_shoulder.type=spherical
+left_shoulder.conn1=left_clavicle.ports.left_humerus
+left_shoulder.conn2=left_humerus.ports.left_clavicle
+left_shoulder.active=123
+
+%humeri
+right_humerus.entity=segment
+right_humerus.mass=0.028
+right_humerus.size=0.1802 % changed to fit subject
+right_humerus.diameter=0.04
+right_humerus.ports.right_clavicle.position=[0 0 -0.4]
+right_humerus.ports.right_clavicle.orient=[0 0 0]
+right_humerus.ports.right_radius.position=[0 0 0.6]
+right_humerus.ports.right_radius.orient=[0 0 0]
+left_humerus.entity=segment
+left_humerus.mass=0.028
+left_humerus.size=0.165
+left_humerus.diameter=0.04
+left_humerus.ports.left_clavicle.position=[0 0 -0.4]
+left_humerus.ports.left_clavicle.orient=[0 0 0]
+left_humerus.ports.left_radius.position=[0 0 0.6]
+left_humerus.ports.left_radius.orient=[0 0 0]
+
+%elbows
+right_elbow.entity=joint
+right_elbow.type=spherical
+right_elbow.conn1=right_humerus.ports.right_radius
+right_elbow.conn2=right_radius.ports.right_humerus
+right_elbow.active=2
+right_elbow.upper2=-2
+left_elbow.entity=joint
+left_elbow.type=spherical
+left_elbow.conn1=left_humerus.ports.left_radius
+left_elbow.conn2=left_radius.ports.left_humerus
+left_elbow.active=2
+left_elbow.upper2=-2
+
+%radii
+right_radius.entity=segment
+right_radius.mass=0.016
+right_radius.size=0.1330 % Changed to fit subject
+right_radius.diameter=0.05
+right_radius.ports.right_humerus.position=[0 0 -0.4]
+right_radius.ports.right_humerus.orient=[0 0 0]
+right_radius.ports.right_hand.position=[0 0 0.6]
+left_radius.entity=segment
+left_radius.mass=0.016
+left_radius.size=0.147
+left_radius.diameter=0.05
+left_radius.ports.left_humerus.position=[0 0 -0.4]
+left_radius.ports.left_hand.position=[0 0 0.6]
+left_radius.ports.left_humerus.orient=[0 0 0]
+
+%wrists
+right_wrist.entity=joint
+right_wrist.type=spherical
+right_wrist.conn1=right_radius.ports.right_hand
+right_wrist.conn2=right_hand.ports.right_radius
+right_wrist.active=0
+left_wrist.entity=joint
+left_wrist.type=spherical
+left_wrist.conn1=left_radius.ports.left_hand
+left_wrist.conn2=left_hand.ports.left_radius
+left_wrist.active=0
+
+%hands
+right_hand.entity=segment
+right_hand.mass=0.006
+right_hand.size=0.1075 % Adapted to fit subject
+right_hand.diameter=0.04
+right_hand.ports.right_radius.position=[0 0 -0.25]
+right_hand.lump.mass=0
+right_hand.lump.position=[0,0,0.05]
+
+left_hand.entity=segment
+left_hand.mass=0.006
+left_hand.size=0.1031
+left_hand.diameter=0.04
+left_hand.ports.left_radius.position=[0 0 -0.25]
+
+% %racket
+% right_hand.ports.racket.position=[0 0.1 0.25]
+% right_hand.ports.racket.orient=[0 0 0]
+% racket.entity=segment
+% racket.mass=-0.27
+% racket.size=-0.64
+% racket.I.k=[0.2901,0.3227,0.1472]
+% racket.ports.hand.position=[0 0 -0.65]
+% racket.ports.hand.orient=[0 0 0]
+% grip.entity=joint
+% grip.type=spherical
+% grip.conn2=right_hand.ports.racket
+% grip.conn1=racket.ports.hand
+% grip.active=0
+
+%lumbar
+thorax_l1.entity=joint
+thorax_l1.type=spherical
+thorax_l1.conn1=thorax.ports.l1
+thorax_l1.conn2=l1.ports.thorax
+thorax_l1.active=0
+
+l1.entity=segment
+l1.mass=0.0049
+l1.size=0.02
+l1.diameter=0.02
+l1.ports.thorax.position=[0 0 0.65]
+l1.ports.thorax.orient=[0 0 0]
+l1.ports.l2.position=[0 0 -0.4]
+l1.ports.l2.orient=[0 -20 0]
+
+l1_l2.entity=joint
+l1_l2.type=spherical
+l1_l2.conn1=l1.ports.l2
+l1_l2.conn2=l2.ports.l1
+l1_l2.active=0
+
+l2.entity=segment
+l2.mass=0.0049
+l2.size=0.02
+l2.diameter=0.02
+l2.ports.l1.position=[0 0 0.8]
+l2.ports.l1.orient=[0 0 0]
+l2.ports.l3.position=[0 0 -0.4]
+l2.ports.l3.orient=[0 -20 0]
+
+l2_l3.entity=joint
+l2_l3.type=spherical
+l2_l3.conn1=l2.ports.l3
+l2_l3.conn2=l3.ports.l2
+l2_l3.active=123
+
+l3.entity=segment
+l3.mass=0.0049
+l3.size=0.02
+l3.diameter=0.02
+l3.orient=[0,0,0]
+l3.k=[1e-2,1e-2,1e-2]
+l3.ports.l2.position=[0 0 0.8]
+l3.ports.l2.orient=[0 0 0]
+l3.ports.l4.position=[0 0 -0.4]
+l3.ports.l4.orient=[0 -20 0]
+
+l3_l4.entity=joint
+l3_l4.type=spherical
+l3_l4.conn1=l3.ports.l4
+l3_l4.conn2=l4.ports.l3
+l3_l4.active=0
+
+l4.entity=segment
+l4.mass=0.0049
+l4.size=0.02
+l4.diameter=0.02
+l4.orient=[0,0,0]
+l4.k=[1e-2,1e-2,1e-2]
+l4.ports.l3.position=[0 0 0.8]
+l4.ports.l3.orient=[0 0 0]
+l4.ports.l5.position=[0 0 -0.4]
+l4.ports.l5.orient=[0 -20 0]
+
+l4_l5.entity=joint
+l4_l5.type=spherical
+l4_l5.conn1=l4.ports.l5
+l4_l5.conn2=l5.ports.l4
+l4_l5.active=123
+
+l5.entity=segment
+l5.mass=0.0049
+l5.size=0.02
+l5.diameter=0.02
+l5.orient=[0,0,0]
+l5.k=[1e-2,1e-2,1e-2]
+l5.ports.l4.position=[0 0 0.8]
+l5.ports.l4.orient=[0 0 0]
+l5.ports.pelvis.position=[0 0 -0.4]
+l5.ports.pelvis.orient=[0 47 0]
+
+l5_pelvis.entity=joint
+l5_pelvis.type=spherical
+l5_pelvis.conn1=l5.ports.pelvis
+l5_pelvis.conn2=pelvis.ports.l5
+l5_pelvis.active=0
+
+%pelvis
+pelvis.entity=segment
+pelvis.mass=0.142
+pelvis.size=0.1697
+pelvis.diameter=0.14
+pelvis.ports.l5.position=[-0.15,0,0.18]
+pelvis.ports.right_femur.position=[0.09,-0.3,-0.24]
+pelvis.ports.right_femur.orient=[0,0,0]
+pelvis.ports.left_femur.position=[0.09,0.3,-0.24]
+pelvis.ports.left_femur.orient=[0,0,0]
+
+%hips
+right_hip.entity=joint
+right_hip.type=spherical
+right_hip.conn1=pelvis.ports.right_femur
+right_hip.conn2=right_femur.ports.pelvis
+right_hip.lower_2=-100
+right_hip.upper_2=90
+right_hip.active=123
+left_hip.entity=joint
+left_hip.type=spherical
+left_hip.conn1=pelvis.ports.left_femur
+left_hip.conn2=left_femur.ports.pelvis
+left_hip.lower_2=-100
+left_hip.upper_2=90
+left_hip.active=123
+
+%femurs
+right_femur.entity=segment
+right_femur.mass=0.1
+right_femur.size=0.2601
+right_femur.diameter=0.08
+right_femur.ports.pelvis.orient=[0 180 0]
+right_femur.ports.pelvis.position=[0 0 -0.42]
+right_femur.ports.right_tibia.position=[0 0 0.55]
+right_femur.ports.right_tibia.orient=[0 0 0]
+left_femur.entity=segment
+left_femur.mass=0.1
+left_femur.size=0.2601
+left_femur.diameter=0.08
+left_femur.ports.pelvis.orient=[0 180 0]
+left_femur.ports.pelvis.position=[0 0 -0.42]
+left_femur.ports.left_tibia.position=[0 0 0.55]
+left_femur.ports.left_tibia.orient=[0 0 0]
+
+%knees
+right_knee.entity=joint
+right_knee.type=knee
+right_knee.conn1=right_femur.ports.right_tibia
+right_knee.conn2=right_tibia.ports.right_femur
+right_knee.angle=    [0    80    160 180]
+right_knee.tibia_si= [0 -0.02 -0.02 -0.02]
+right_knee.femur_ap= [0 0 0]
+right_knee.femur_si= [0 0 0]
+right_knee.tibia_ap= [0 0 0]
+right_knee.active=2
+right_knee.lower2=2
+
+left_knee.entity=joint
+left_knee.type=knee
+left_knee.conn1=left_femur.ports.left_tibia
+left_knee.conn2=left_tibia.ports.left_femur
+left_knee.angle=    [0    80    160 180]
+left_knee.tibia_si= [0 -0.02 -0.02 -0.02]
+left_knee.femur_ap= [0 0 0]
+left_knee.femur_si= [0 0 0]
+left_knee.tibia_ap= [0 0 0]
+left_knee.active=2
+left_knee.lower2=2
+
+%patellas
+right_patella.entity=segment
+right_patella.mass=1e-5
+right_patella.size=0.005
+right_patella.diameter=0.005
+right_patella.ports.right_tibia.position=[0 -0.1 2]
+right_patella.ports.right_tibia.orient=[0 0 0]
+left_patella.entity=segment
+left_patella.mass=1e-5
+left_patella.size=0.005
+left_patella.diameter=0.005
+left_patella.ports.left_tibia.position=[0 0.1 2]
+left_patella.ports.left_tibia.orient=[0 0 0]
+
+%patella joints
+right_patella_joint.entity=joint
+right_patella_joint.type=patella
+right_patella_joint.conn1=right_tibia.ports.right_patella
+right_patella_joint.conn2=right_patella.ports.right_tibia
+right_patella_joint.knee_angle=    [ 0 80 160 180]
+right_patella_joint.ligament_angle=[ 5 20  25 12]
+right_patella_joint.active=0
+left_patella_joint.entity=joint
+left_patella_joint.type=patella
+left_patella_joint.conn1=left_tibia.ports.left_patella
+left_patella_joint.conn2=left_patella.ports.left_tibia
+left_patella_joint.knee_angle=    [ 0 80 160 180]
+left_patella_joint.ligament_angle=[ 5 20  25 12]
+left_patella_joint.active=0
+
+%tibias
+right_tibia.entity=segment
+right_tibia.mass=0.0465
+right_tibia.size=0.2545
+right_tibia.diameter=0.06
+right_tibia.ports.right_femur.position=[0 0 -0.445]
+right_tibia.ports.right_femur.orient=[0 0 0]
+right_tibia.ports.right_foot.position=[0 0 0.567]
+right_tibia.ports.right_foot.orient=[0 -90 0]
+left_tibia.entity=segment
+left_tibia.mass=0.0465
+left_tibia.size=0.2545
+left_tibia.diameter=0.06
+left_tibia.ports.left_femur.position=[0 0 -0.445]
+left_tibia.ports.left_femur.orient=[0 0 0]
+left_tibia.ports.left_foot.position=[0 0 0.567]
+left_tibia.ports.left_foot.orient=[0 -90 0]
+right_tibia.ports.right_patella.position=[-0.08 -0.03 -0.32]
+right_tibia.ports.right_patella.orient=[0 0 0]
+left_tibia.ports.left_patella.position=[-0.08 0.03 -0.32]
+left_tibia.ports.left_patella.orient=[0 0 0]
+
+%ankles
+right_ankle.entity=joint
+right_ankle.type=spherical
+right_ankle.conn1=right_tibia.ports.right_foot
+right_ankle.conn2=right_foot.ports.right_tibia
+right_ankle.active=2
+left_ankle.entity=joint
+left_ankle.type=spherical
+left_ankle.conn1=left_tibia.ports.left_foot
+left_ankle.conn2=left_foot.ports.left_tibia
+left_ankle.active=2
+
+%feet
+right_foot.entity=segment
+right_foot.mass=0.0145
+right_foot.size=0.0961
+right_foot.diameter=0.04
+right_foot.ports.right_tibia.position=[-0.1 0 -0.3]
+left_foot.entity=segment
+left_foot.mass=0.0145
+left_foot.size=0.0961
+left_foot.diameter=0.04
+left_foot.ports.left_tibia.position=[-0.1 0 -0.3]

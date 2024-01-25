@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OpenSimDocument Version="40000">
+	<ExternalLoads name="externalloads">
+		<objects>
+			<ExternalForce name="hand_force_v">
+				<!--Name of the body the force is applied to.-->
+				<applied_to_body>hand</applied_to_body>
+				<!--Name of the body the force is expressed in (default is ground).-->
+				<force_expressed_in_body>ground</force_expressed_in_body>
+				<!--Name of the body the point is expressed in (default is ground).-->
+				<point_expressed_in_body>hand</point_expressed_in_body>
+				<!--Identifier (string) to locate the force to be applied in the data source.-->
+				<force_identifier>hand_force_v</force_identifier>
+				<!--Identifier (string) to locate the point to be applied in the data source.-->
+				<point_identifier>hand_force_p</point_identifier>
+				<!--Name of the data source (Storage) that will supply the force data.-->
+				<data_source_name>opensim_force.mot</data_source_name>
+			</ExternalForce>
+		</objects>
+		<groups />
+		<!--Storage file (.sto) containing (3) components of force and/or torque and point of application.Note: this file overrides the data source specified by the individual external forces if specified.-->
+		<datafile>...\opensim_force.mot</datafile>
+	</ExternalLoads>
+</OpenSimDocument>
