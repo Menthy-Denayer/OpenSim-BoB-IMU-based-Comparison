@@ -1,6 +1,10 @@
 # OpenSim-BoB-IMU-based-Comparison
 Collection of model &amp; input files, scripts and methods used to perform a comparison between the OpenSim and Biomechanics of Bodies (BoB) simulation softwares.
 
+Below, a breakdown is given of the steps required to replicate the performed experiments. __Pay attention to the following:__
+- Be sure to add the 'Geometry' files required for the MoBL_ARMS_41 model to the same directory as the .osim model file
+- Be sure to check file locations in order to succesfully run the provided scripts
+
 # Biomechanics of Bodies (BoB) Workflow
 To replicate the experiments inside of BoB, simply import the following files into BoB:
 - XSens data file 'original_data.mvnx', containing IMU measurements
@@ -37,3 +41,7 @@ Output: 'opensim_force.txt', 'opensim_force.xml', 'filteredIK_imu_scaled_segment
 - change the precision to 20
 
 Output: 'SO_imu_muscle_force_scaled_segments.sto', 'SO_imu_muscle_activations_scaled_segments.sto', 'SO_imu_settings_scaled_segments.xml'
+
+# Acknowledgements
+- The OpenSim model and IK filtering code were taken from the [MoBL Arms project](https://simtk.org/projects/upexdyn)
+- The IMU calibration and tracking codes were taken from the [OpenSense project](https://simtk.org/projects/opensense)
