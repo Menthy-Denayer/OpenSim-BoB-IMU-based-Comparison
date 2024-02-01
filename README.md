@@ -42,6 +42,13 @@ Output: 'opensim_force.txt', 'opensim_force.xml', 'filteredIK_imu_scaled_segment
 
 Output: 'SO_imu_muscle_force_scaled_segments.sto', 'SO_imu_muscle_activations_scaled_segments.sto', 'SO_imu_settings_scaled_segments.xml'
 
+# Post-processing Workflow
+As the definition of joint angles differs between OpenSim and BoB, the OpenSim shoulder angles must be transformed into equivalent XYZ Euler angles. This is achieved by using the 'OpenSim_orientations.m' script.
+
+Before applying the static optimization tool inside OpenSim, it is best to filter the results of the inverse kinematics tool. This is achieved using the 'MoBL_Arms_IKfilter.m' script, provided by the MoBL Arms project.
+
+Plots of the results and computation of the correlation coefficients and errors can be repeated using the 'plotter.m' script.
+
 # Acknowledgements
 - The OpenSim model and IK filtering code were taken from the [MoBL Arms project](https://simtk.org/projects/upexdyn)
 - The IMU calibration and tracking codes were taken from the [OpenSense project](https://simtk.org/projects/opensense)
